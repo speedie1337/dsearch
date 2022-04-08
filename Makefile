@@ -9,9 +9,9 @@ help:
 	@echo "make uninstall        Remove dsearch."
 
 install:
-  cp -r dsearch ${INSTALL_DOTFILE_DIR}
-  cp dsearch-bin ${INSTALL_DIR}/dsearch
+	cp -r dsearch ${INSTALL_DOTFILE_DIR}
+	cp dsearch-bin ${INSTALL_DIR}/dsearch
 
 uninstall:
 	rm ${INSTALL_DIR}/${NAME}
-  rm -r ${INSTALL_DOTFILE_DIR}/dsearch
+	rm -r ${INSTALL_DOTFILE_DIR}/dsearch
