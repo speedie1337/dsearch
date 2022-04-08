@@ -19,6 +19,7 @@ Vim into ~/.config/dsearch/dsearchrc and change these settings:
 - DSEARCH_DOTDIR # Only change if you wanna move your dotfiles.
 - DSEARCH_DMENU # Set this to the path to your dmenu binary.
 - DSEARCH_SHELL # Set this to the shell you want to use, /bin/sh should do.
+- DSEARCH_BROWSER # Set this to a web browser on your system.
 - DSEARCH_SEARCHENGINE # Leave this as default unless you REALLY need to change it.
 
 ### Adding More Search Engines
