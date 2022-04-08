@@ -1,0 +1,5 @@
+# dsearch default configuration file
+DSEARCH_DOTDIR=~/.config/dsearch # The directory where your dotfiles are located.
+DSEARCH_DMENU="/usr/bin/dmenu" # The directory where your dmenu binary is located.
+DSEARCH_SHELL="/bin/sh -c" # The shell to use.
+DSEARCH_SEARCHENGINE="$(<$DSEARCH_DOTDIR/SEARCH.USE)" # Search engine to use, can leave as default.
