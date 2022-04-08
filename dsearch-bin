@@ -1,0 +1,72 @@
+#!/bin/zsh
+# dsearch
+# dmenu script which can search many websites for keywords and open the results in your browser
+# 08-04-2022
+# Licensed under MIT.
+
+# Import configuration
+DSEARCH_IMPORT()
+{
+  . ~/.config/dsearch/dsearchrc || DSEARCH_DEFAULT_CONFIGURATION
+}
+
+# Run a few things that need to run
+DSEARCH_INIT()
+{
+  echo "DSEARCH has been loaded!" && DSEARCH_HAS_BEEN_LOADED=true
+  ls $DSEARCH_DOTDIR/SEARCH.USE ||  
+}
+
+DSEARCH_DEFAULT_CONFIGURATION()
+{
+  DSEARCH_DOTDIR=~/.config/dsearch # Where your dotfiles are
+  DSEARCH_DMENU=/usr/bin/dmenu # Path to dmenu
+  DSEARCH_BROWSER=$BROWSER # Web browser to open results in
+  DSEARCH_SHELL="/bin/zsh -c" # Shell to use
+  DSEARCH_SEARCHENGINE="$(<$DSEARCH_DOTDIR/SEARCH.USE)" # Website/Service to search
+  # Examples:
+  # https://searx.org/search?q=
+  # https://www.google.com/search?q=
+  # https://stackoverflow.com/search?q=
+  # https://duckduckgo.com/?q=
+  # https://wiki.archlinux.org/index.php?search=
+  # https://wiki.gentoo.org/index.php?search=
+}
+
+DSEARCH_CHECKDEP()
+{
+  ls $DSEARCH_DMENU || DSEARCH_DIE
+}
+
+DSEARCH_DIE()
+{
+  echo "Exiting (1)" && exit 1
+}
+
+DSEARCH_EXIT()
+{
+  echo "Exiting (0)" && exit 0
+}
+
+DSEARCH_IMPORT # Import configuration file from either variable or predefined directory
+DSEARCH_CHECKDEP # Check to make sure all dependencies are installed
+DSEARCH_INIT # Init
+
+DSEARCH_SEARCH=$(printf "Enter search terms\nChange Search Engine\nExit" | $DSEARCH_DMENU) && query=$(tr -s ' ' '+' <<< "$DSEARCH_SEARCH")
+
+# Add a Change Search Engine option
+case "$DSEARCH_SEARCH" in
+    "Change Search Engine") DSEARCH_MENU="DSEARCH_CHANGE_ENGINE" ;;
+	"Exit") DSEARCH_EXIT ;;
+esac
+
+case "$DSEARCH_MENU" in
+    "DSEARCH_CHANGE_ENGINE") DSEARCH_SELECTED="$(printf "$(ls $DSEARCH_DOTDIR/SEARCH_ENGINES)\nExit" | $DSEARCH_DMENU)" && cat $DSEARCH_DOTDIR/SEARCH_ENGINES/$DSEARCH_SELECTED > $DSEARCH_DOTDIR/SEARCH.USE && DSEARCH_EXIT ;;
+esac
+
+DSEARCH_BASICSEARCH()
+{
+  $DSEARCH_BROWSER $DSEARCH_SEARCHENGINE$query
+}
+
+DSEARCH_BASICSEARCH && echo "Searched successfully!" && exit 0
