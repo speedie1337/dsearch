@@ -27,7 +27,7 @@ Default search engines not enough for you? Here's how to add more.
 - vim (searchenginename)
 
 Now locate the URL. You'll want the entire URL up until the ?q= part.
-To use searx, you'd add "https://searx.org/search<?q=" to the file.
+To use searx, you'd add "https://searx.org/search?q=" to the file.
 
 Add your search engine to the file and :wq.
 
