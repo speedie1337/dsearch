@@ -11,6 +11,7 @@ help:
 install:
 	cp -r dsearch ${INSTALL_DOTFILE_DIR}
 	cp dsearch-bin ${INSTALL_DIR}/dsearch
+	chmod +x ${INSTALL_DIR/dsearch
 
 uninstall:
 	rm ${INSTALL_DIR}/${NAME}
