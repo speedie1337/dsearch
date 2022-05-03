@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 # dsearch
 # dmenu script which can search many websites for keywords and open the results in your browser
 # 08-04-2022
