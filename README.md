@@ -39,4 +39,4 @@ If you do not feel like doing this, you can download existing engines from [this
 - Suckless, for the awesome dmenu tool.
 
 ### License
-This software is licensed under the MIT license.
+This software is licensed under the GNU GPLv3 license.
