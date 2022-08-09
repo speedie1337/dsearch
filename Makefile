@@ -9,7 +9,7 @@ help:
 	@echo "make uninstall        Remove dsearch."
 
 install:
-	cp -r dsearch ${INSTALL_DOTFILE_DIR}
+	cp -r dsearch ${INSTALL_DOTFILE_DIR}/dsearch
 	cp dsearch-bin ${INSTALL_DIR}/dsearch
 	chmod +x ${INSTALL_DIR}/dsearch
 
